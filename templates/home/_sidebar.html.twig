@@ -1,0 +1,47 @@
+<nav class="colorlib-nav" role="navigation">
+    <div class="top-menu">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-2">
+                    <div id="colorlib-logo"><a href="{{ path('home') }}">DÜKKAN</a></div>
+                </div>
+                <div class="col-xs-10 text-right menu-1">
+                    <ul>
+                        <li class="active"><a href="{{ path('home') }}">Ana Sayfa</a></li>
+                        <li class="has-dropdown">
+                            <a>Kategoriler</a>
+                            <ul class="dropdown" style="display: none;">
+                                {% for cat in cats %}
+                                    {{ cat|raw }}
+                                {% endfor %}
+                            </ul>
+                        </li>
+                        <li><a href=" {{ path('referanslar') }}">Referanslar</a></li>
+                        <li><a href=" {{ path('hakkimizda') }}">Hakkımızda</a></li>
+                        <li><a href=" {{ path('iletisim') }}">İletişim</a></li>
+                        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                            <li class="has-dropdown">
+                            <a href="{{ path('userpanel_show') }}">
+                                {{ app.user.name }}</a>
+                                <ul class="dropdown" style="display: none;">
+                            <li><a href="{{ path('orders_index') }}">Siparişlerim</a></li>
+                                    <li><a href="{{ path('userpanel_edit') }}">Üyelik Bilgilerimi Düzenle</a></li>
+                                    <li><a href="{{ path('userpanel_edit') }}">Mesajlarım</a></li>
+                                    <li><a href="{{ path('shop_cart_index') }}"><i class="icon-shopping-cart">Sepet[0]</i></a></li>
+                            <li><a href="{{ path("app_logout")}}"> Çıkış Yap </a></li>
+                                </ul>
+                        </li>
+                        {% else %}
+                            <li class="has-dropdown">
+                                <a href="{{ path('app_login') }}"> Kullanıcı girişi</a>
+                                <ul class="dropdown" style="display: none;">
+                                    <li><a href="{{ path('newuser') }}"> Üye Ol!</a></li>
+                                </ul>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>

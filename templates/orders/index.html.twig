@@ -1,0 +1,68 @@
+{% extends 'frontbase.html.twig' %}
+
+{% block title %}Geçmiş Siparişler{% endblock %}
+{% block sidebar %} {{  include ('home/usidebar.html.twig') }} {% endblock %}
+{% block slider %}
+    <aside id="colorlib-hero" class="breadcrumbs">
+        <div class="flexslider">
+            <ul class="slides">
+                <li style="background-image: url(&quot;images/cover-img-1.jpg&quot;); width: 100%; float: left; margin-right: -100%; position: relative; opacity: 1; display: block; z-index: 2;" class="flex-active-slide">
+                    <div class="overlay"></div>
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-6 col-md-offset-3 col-sm-12 col-xs-12 slider-text animated fadeInUp">
+                                <div class="slider-text-inner text-center">
+                                    <h1>Sipariş Geçmişim</h1>
+                                    <h2 class="bread"><span><a href="{{ path('home') }}">Ana Sayfa</a></span></h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <ol class="flex-control-nav flex-control-paging"></ol><ul class="flex-direction-nav"><li class="flex-nav-prev"><a class="flex-prev flex-disabled" href="#" tabindex="-1">Previous</a></li><li class="flex-nav-next"><a class="flex-next flex-disabled" href="#" tabindex="-1">Next</a></li></ul></div>
+    </aside>
+{% endblock %}
+
+{% block content %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Userid</th>
+                <th>Miktar</th>
+                <th>Ürün Adı</th>
+                <th>Adres</th>
+                <th>Şehir</th>
+                <th>Telefon</th>
+                <th>Sipariş Durumu</th>
+                <th>Durumu</th>
+                <th>Not</th>
+                <th>İşlemler</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for order in orders %}
+            <tr>
+                <td>{{ order.id }}</td>
+                <td>{{ order.userid }}</td>
+                <td>{{ order.amount }}</td>
+                <td>{{ order.name }}</td>
+                <td>{{ order.address }}</td>
+                <td>{{ order.city }}</td>
+                <td>{{ order.phone }}</td>
+                <td>{{ order.shipinfo }}</td>
+                <td>{{ order.status }}</td>
+                <td>{{ order.note }}</td>
+                <td>
+                    <a href="{{ path('orders_show', {'id': order.id}) }}">show</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="11">Siparişiniz Bulunmamaktadır</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

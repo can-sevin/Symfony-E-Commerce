@@ -1,0 +1,18 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Ürün Resmi Düzenle{% endblock %}
+
+{% block content %}
+    <h1>{{ product.title }}</h1>
+
+    <form action="{{ path('admin_product_iupdate',{'id': id}) }}" method="post" enctype="multipart/form-data">
+        Yüklenecek Resmi Seçiniz:
+        <input name="productId" value="{{ id }}" type="number" readonly>
+        <input type="file" name="imagename" id="fileToUpload"><br>
+        <input type="submit" value="Resim Yükle" name="submit">
+    </form>
+
+    {% if product.image != null %}
+    <img src="{{ asset('uploads') }}/images/{{ product.image }}">
+    {% endif %}
+{% endblock %}

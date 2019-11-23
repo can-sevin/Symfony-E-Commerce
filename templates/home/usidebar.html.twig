@@ -1,0 +1,23 @@
+<nav class="colorlib-nav" role="navigation">
+    <div class="top-menu">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-2">
+                    <div id="colorlib-logo"><a href="{{ path('home') }}">DÜKKAN</a></div>
+                </div>
+                <div class="col-xs-10 text-right menu-1">
+                    <ul>
+                        <li class="active"><a href="{{ path('home') }}">Ana Sayfa</a></li>
+                        <li><a href=" {{ path('userpanel_show') }}">Bilgilerim</a></li>
+                        <li><a href=" {{ path('userpanel_edit') }}">Bilgilerimi Düzenle</a></li>
+                        <li><a href=" {{ path('orders_index') }}">Siparişlerim</a></li>
+                        <li><a href=" {{ path('shop_cart_index') }}">Sepetim</a></li>
+                        <li><a href=" {{ path('order_detail_index') }}">Sipariş Geçmişi</a></li>
+                        <li><a href=" {{ path('iletisim') }}">Mesaj At</a></li>
+                        <li><a href=" {{ path('app_logout') }}">Çıkış</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>

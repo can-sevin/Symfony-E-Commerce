@@ -1,0 +1,117 @@
+{% extends 'frontbase.html.twig' %}
+
+{% block title %}ShopCart index{% endblock %}
+
+{% block keywords %} {{ data[0].keywords }} {% endblock %}
+{% block sidebar %} {{  include ('home/usidebar.html.twig') }} {% endblock %}
+{% block slider %}
+    <aside id="colorlib-hero" class="breadcrumbs">
+        <div class="flexslider">
+            <ul class="slides">
+                <li style="background-image: url(&quot;images/cover-img-1.jpg&quot;); width: 100%; float: left; margin-right: -100%; position: relative; opacity: 1; display: block; z-index: 2;" class="flex-active-slide">
+                    <div class="overlay"></div>
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-6 col-md-offset-3 col-sm-12 col-xs-12 slider-text animated fadeInUp">
+                                <div class="slider-text-inner text-center">
+                                    <h1>Sepetiniz</h1>
+                                    <h2 class="bread"><span><a href="{{ path('home') }}">Ana Sayfa</a></span></h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <ol class="flex-control-nav flex-control-paging"></ol><ul class="flex-direction-nav"><li class="flex-nav-prev"><a class="flex-prev flex-disabled" href="#" tabindex="-1">Previous</a></li><li class="flex-nav-next"><a class="flex-next flex-disabled" href="#" tabindex="-1">Next</a></li></ul></div>
+    </aside>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row row-pb-md">
+            <div class="col-md-10 col-md-offset-1">
+                <div class="process-wrap">
+                    <div class="process text-center active">
+                        <p><span>01</span></p>
+                        <h3>Sepet</h3>
+                    </div>
+                    <div class="process text-center">
+                        <p><span>02</span></p>
+                        <h3>Toplam</h3>
+                    </div>
+                    <div class="process text-center">
+                        <p><span>03</span></p>
+                        <h3>Sipariş</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row row-pb-md">
+            <div class="col-md-10 col-md-offset-1">
+                <div class="product-name">
+                    <div class="one-forth text-center">
+                        <span>Ürün Detayı</span>
+                    </div>
+                    <div class="one-eight text-center">
+                        <span>Fiyatı</span>
+                    </div>
+                    <div class="one-eight text-center">
+                        <span>Miktarı</span>
+                    </div>
+                    <div class="one-eight text-center">
+                        <span>Toplam</span>
+                    </div>
+                    <div class="one-eight text-center">
+                        <span>Kaldır</span>
+                    </div>
+                </div>
+                {% set total=0 %}
+                {% for shop_cart in shopcarts %}
+                    <div class="product-cart">
+                    <div class="one-forth">
+                        <div class="display-tc">
+                            <h3>{{ shop_cart.title }}</h3>
+                        </div>
+                    </div>
+                    <div class="one-eight text-center">
+                        <div class="display-tc">
+                            <span class="price">{{ shop_cart.sprice }}TL</span>
+                        </div>
+                    </div>
+                    <div class="one-eight text-center">
+                        <div class="display-tc">
+                            <span class="quantity">{{ shop_cart.quantity }}</span>
+                        </div>
+                    </div>
+                    <div class="one-eight text-center">
+                        <div class="display-tc">
+                            <span class="price">{% set total = total +(shop_cart.quantity * shop_cart.sprice) %}TL</span>
+                        </div>
+                    </div>
+                    <div class="one-eight text-center">
+                        <div class="display-tc">
+                            <a href="{{ path('shop_cart_del', {'id': shop_cart.id}) }}" class="closed"></a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+                <div class="total-wrap">
+                    <div class="row">
+                        <div class="col-md-3 col-md-push-1 text-center">
+                            <div class="total">
+                                <div class="grand-total">
+                                    <p><span><strong>Toplam:{{ total }}TL</strong></span><span></span></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a href="{{path('orders_new')}}" class="btn btn-primary">SatınAL!</a>
+{% endblock %}

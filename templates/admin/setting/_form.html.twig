@@ -1,0 +1,120 @@
+<form  name="form horizontal" method="post">
+    <div class="main-content-inner">
+        <div class="row">
+            <div class="col-8 mt-5">
+            <div class="card">
+                <div class="card-body">
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active show" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Genel Bilgiler</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Email Server</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Hakkımızda</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="contact-tab" data-toggle="tab" href="#iletişim" role="tab" aria-controls="contact" aria-selected="false">İletişim</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="contact-tab" data-toggle="tab" href="#ref" role="tab" aria-controls="contact" aria-selected="false">Referanslar</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content mt-3" id="myTabContent">
+                        <div class="tab-pane fade active show" id="home" role="tabpanel" aria-labelledby="home-tab">
+                            <b>Genel Bilgiler</b>
+                            <div class="form-group">
+                                <label for="example-text-input" class="col-form-label">Başlık:</label>
+                                <input class="form-control" name="setting[title]" type="text" value="{{setting.title}}" id="example-text-input">
+                            </div>
+                            <div class="form-group">
+                                <label for="editor" class="col-form-label">Açıklama:</label>
+                                <textarea class="form-control" name="setting[description]" id="editor" rows="10" cols="80">{{setting.description}}</textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="example-url-input" class="col-form-label">Keywords:</label>
+                                <input class="form-control" name="setting[keywords]" type="text" value="{{setting.keywords}}" id="example-url-input">
+                            </div>
+                            <div class="form-group">
+                                <label for="example-url-iinput" class="col-form-label">Company:</label>
+                                <input class="form-control" id="example-url-iinput" name="setting[company]" type="text" value="{{setting.company}}">
+                            </div>
+                            <div class="form-group">
+                                <label for="durumm" class="col-form-label">Durum:</label>
+                                <select class="form-control" name="setting[status]" value="{{ setting.status }}" id="durumm">
+                                    <option value="Aktif">Aktif</option>
+                                    <option value="İnAktif">İnAktif</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                            <b>Email Server</b>
+                            <div class="form-group">
+                                <label for="min" class="col-form-label">SmtpServer:</label>
+                                <input class="form-control" name="setting[smtpserver]" type="integer" value="{{setting.smtpserver}}" id="min">
+                            </div>
+                            <div class="form-group">
+                                <label for="reslink" class="col-form-label">SmtpPassword:</label>
+                                <input class="form-control" name="setting[smtppassword]" type="text" value="{{setting.smtppassword}}" id="reslink">
+                            </div>
+                            <div class="form-group">
+                                <label for="reeslink" class="col-form-label">StmpEmail:</label>
+                                <input class="form-control" name="setting[smtpemail]" type="email" value="{{setting.smtpemail}}" id="reeslink">
+                            </div>
+                            <div class="form-group">
+                                <label for="katid" class="col-form-label">SmtpPort:</label>
+                                <input class="form-control" name="setting[smtpport]" type="integer" value="{{setting.smtpport}}" id="katid">
+                            </div>
+
+                        </div>
+                        <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                            <b>Hakkımızda</b>
+                            <div class="form-group">
+                                <label for="userid" class="col-form-label">Hakkımızda:</label>
+                                <textarea class="form-control" name="setting[aboutus]" id="userid" rows="10" cols="80">{{setting.aboutus}}</textarea>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="iletişim" role="tabpanel" aria-labelledby="contact-tab">
+                            <b>İletişim</b>
+                            <div class="form-group">
+                                <label for="durum" class="col-form-label">İletişim:</label>
+                                <input class="form-control" name="setting[contact]" type="text" value="{{setting.contact}}" id="durum">
+                            </div>
+                            <div class="form-group">
+                                <label for="marka" class="col-form-label">Adres:</label>
+                                <input class="form-control" name="setting[address]" type="text" value="{{setting.address}}" id="marka">
+                            </div>
+                            <div class="form-group">
+                                <label for="miktar" class="col-form-label">Fax:</label>
+                                <input class="form-control" name="setting[fax]" type="integer" value="{{setting.fax}}" id="example-url-input">
+                            </div>
+                            <div class="form-group">
+                                <label for="sfiyat" class="col-form-label">Telefon:</label>
+                                <input class="form-control" name="setting[phone]" type="integer" value="{{setting.phone}}" id="sprice">
+                            </div>
+                            <div class="form-group">
+                                <label for="afiyat" class="col-form-label">Email:</label>
+                                <input class="form-control" name="setting[email]" type="email" value="{{setting.email}}" id="afiyat">
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="ref" role="tabpanel" aria-labelledby="contact-tab">
+                            <b>Referanslar</b>
+                            <div class="form-group">
+                                <label for="durum" class="col-form-label">Referans:</label>
+                                <textarea class="form-control" name="setting[referances]" id="duurum" rows="10" cols="80">{{setting.referances}}</textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                <button type="submit" class="btn btn-primary mt-4 pr-4 pl-4">Güncelle</button>
+            </div>
+        </div>
+    </div>
+</form>
+<script>
+    CKEDITOR.replace( 'editor');
+    CKEDITOR.replace( 'userid');
+    CKEDITOR.replace( 'duurum');
+</script>

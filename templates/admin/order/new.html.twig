@@ -1,0 +1,11 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}New Orders{% endblock %}
+
+{% block content %}
+    <h1>Create new Orders</h1>
+
+    {{ include('orders/_form.html.twig') }}
+
+    <a href="{{ path('orders_index') }}">back to list</a>
+{% endblock %}

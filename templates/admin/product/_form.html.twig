@@ -1,0 +1,74 @@
+<form  name="form horizontal" method="post">
+    <div class="main-content-inner">
+        <div class="row">
+            <!-- Textual inputs start -->
+            <div class="col-8 mt-5">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="header-title">Ürün Düzenleme Formu</h4>
+                        <div class="form-group">
+                            <label for="example-text-input" class="col-form-label">Ana Kategori:</label>
+                            <select class="form-group" name="product[kategori_id]" value="" id="example-text-input">
+                                {% if (catname) %}
+                                <option value="{{ product.kategoriId }}">{{catname[0].title}}</option>
+                                {% endif %}
+                                {% for cat in catlist %}
+                                    <option value="{{cat.id}}">{{cat.title}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="example-search-input" class="col-form-label">Başlık:</label>
+                            <input class="form-control" name="product[title]" type="text" value="{{product.title}}" id="example-search-input" placeholder="Başlık">
+                        </div>
+                        <div class="form-group">
+                            <label for="editor" class="col-form-label">Açıklama:</label>
+                            <textarea class="form-control" name="product[description]" id="editor" rows="10" cols="80" type="text">{{product.description}}</textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="example-url-input" class="col-form-label">Keywords:</label>
+                            <input class="form-control" name="product[keywords]" type="text" value="{{product.keywords}}" id="example-url-input" placeholder="Keywords">
+                        </div>
+                        <div class="form-group">
+                            <label for="marka" class="col-form-label">MarkaId:</label>
+                            <input class="form-control" name="product[marka_id]" type="integer" value="{{product.markaId}}" id="marka" placeholder="Ürün Adı">
+                        </div>
+                        <div class="form-group">
+                            <label for="miktar" class="col-form-label">Miktarı:</label>
+                            <input class="form-control" name="product[amount]" type="integer" value="{{product.amount}}" id="example-url-input" placeholder="Ürün Miktarı">
+                        </div>
+                        <div class="form-group">
+                            <label for="sfiyat" class="col-form-label">Satış Fiyatı:</label>
+                            <input class="form-control" name="product[sprice]" type="float" value="{{product.sprice}}" id="sprice" placeholder="Satış Fiyatı">
+                        </div>
+                        <div class="form-group">
+                            <label for="afiyat" class="col-form-label">Alış Fiyatı:</label>
+                            <input class="form-control" name="product[pprice]" type="float" value="{{product.pprice}}" id="afiyat" placeholder="Alış Fiyatı">
+                        </div>
+                        <div class="form-group">
+                            <label for="min" class="col-form-label">Ürün Miktarı:</label>
+                            <input class="form-control" name="product[minamount]" type="float" value="{{product.minamount}}" id="min" placeholder="Ürün Miktarı">
+                        </div>
+                        <div class="form-group">
+                            <label for="userid" class="col-form-label">User ID:</label>
+                            <input class="form-control" name="product[user_id]" type="integer" value="{{product.userId}}" id="userid">
+                        </div>
+                        <div class="form-group">
+                            <label for="durum" class="col-form-label">Durumu:</label>
+                            <select class="form-control" name="product[status]" type="text" value="{{product.status}}" id="durum">
+                                <option value="True">Aktif</option>
+                                <option value="False">Deaktif</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary mt-4 pr-4 pl-4">Güncelle</button>
+</form>
+
+<script>
+    CKEDITOR.replace( 'editor' );
+</script>
+

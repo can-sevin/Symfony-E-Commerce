@@ -1,0 +1,77 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Ürünler{% endblock %}
+
+{% block content %}
+    <h1>Ürün Listesi</h1>
+<div class="col-lg-20 mt-6">
+    <div class="card">
+        <div class="card-body">
+            <a class="btn btn-primary mb-3" href="{{ path('admin_product_new') }}">Ürün Oluştur</a>
+            <div class="single-table">
+                <div class="table-responsive">
+                    <table class="table table-striped text-center">
+                        <thead class="text-uppercase">
+                        <tr>
+                            <th>Id</th>
+                <th>Başlık</th>
+                <th>Anahtar Kelimeler</th>
+                <th>Açıklama</th>
+                <th>Tipi</th>
+                <th>Marka_id</th>
+                <th>Miktarı</th>
+                <th>Ürün A.Fiyatı</th>
+                <th>Ürün S.Fiyatı</th>
+                <th>Min.stok</th>
+                <th>Detayı</th>
+                <th>Resim</th>
+                <th>Resim galerisi</th>
+                <th>Kategori_id</th>
+                <th>User_id</th>
+                <th>Durumu</th>
+                <th>İşlemler</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for product in products %}
+            <tr>
+                <td>{{ product.id }}</td>
+                <td>{{ product.title }}</td>
+                <td>{{ product.keywords }}</td>
+                <td>{{ product.description }}</td>
+                <td>{{ product.type }}</td>
+                <td>{{ product.markaId }}</td>
+                <td>{{ product.amount }}</td>
+                <td>{{ product.pprice }}</td>
+                <td>{{ product.sprice }}</td>
+                <td>{{ product.minamount }}</td>
+                <td>{{ product.detail }}</td>
+                <td>
+                    <a href="javascript:openWin('{{ path('admin_product_iedit',{'id':product.id}) }}','','toolbar=no,location=no,directories=0,status=no,top=100,left=200,menuBar=no,scrollBars=no,resizable=no,width=600,height=500');">
+                    {% if product.image == null %}
+                    <img src="{{ asset('uploads') }}/images/plus.png" height="60">
+                    {% else %}
+                        <img src="{{ asset('uploads') }}/images/{{ product.image }}" height="40">
+                        {% endif %}
+                    </a>
+                </td>
+                <td><a href="javascript:openWin('{{ path('admin_image_new',{'pid':product.id}) }}','','toolbar=no,location=no,directories=0,status=no,top=100,left=200,menuBar=no,scrollBars=no,resizable=no,width=900,height=500');">
+                        <img src="{{ asset('uploads') }}/images/gallery.png" height="40"></a></td>
+                <td>{{ product.kategoriId }}</td>
+                <td>{{ product.userId }}</td>
+                <td>{{ product.status }}</td>
+                <td>
+                    <a class="btn btn-warning mb-3" href="{{ path('admin_product_show', {'id': product.id}) }}">Göster</a>
+                    <a class="btn btn-success mb-3" href="{{ path('admin_product_edit', {'id': product.id}) }}">Düzenle</a>
+                    <a class="btn btn-danger mb-3" href="{{ path('admin_product_delete',{'id': product.id}) }}">Sil</a>
+                </td>
+                </tr>
+                    {% endfor %}
+                    </tbody>
+            </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

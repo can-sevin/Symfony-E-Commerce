@@ -1,0 +1,70 @@
+{% extends 'frontbase.html.twig' %}
+
+{% block title %}{{ data[0].title }}{% endblock %}
+{% block keywords %} {{ data[0].keywords }} {% endblock %}
+
+{% block sidebar %} {{  include ('home/_sidebar.html.twig') }} {% endblock %}
+
+{% block slider %}
+<aside id="colorlib-hero" class="breadcrumbs">
+    <div class="flexslider">
+        <ul class="slides">
+            <li style="background-image: url(&quot;images/cover-img-1.jpg&quot;); width: 100%; float: left; margin-right: -100%; position: relative; opacity: 1; display: block; z-index: 2;" class="flex-active-slide">
+                <div class="overlay"></div>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-6 col-md-offset-3 col-sm-12 col-xs-12 slider-text animated fadeInUp">
+                            <div class="slider-text-inner text-center">
+                                <h1>{{ data[0].title }}</h1>
+                                <h2 class="bread"><span><a href="{{ path('home') }}">Ana Sayfa</a></span></h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <ol class="flex-control-nav flex-control-paging"></ol><ul class="flex-direction-nav"><li class="flex-nav-prev"><a class="flex-prev flex-disabled" href="#" tabindex="-1">Previous</a></li><li class="flex-nav-next"><a class="flex-next flex-disabled" href="#" tabindex="-1">Next</a></li></ul></div>
+</aside>
+{% endblock %}
+{% block content %}
+    <div class="colorlib-shop">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 col-md-push-2">
+                    <div class="row row-pb-lg">
+                        {% for rs in products %}
+                        <div class="col-md-4 text-center">
+                            <div class="product-entry">
+                                <div class="product-img" style="background-image: url({{ asset('uploads') }}/images/{{ rs.image }});">
+                                    <p class="tag"><span class="sale">Sale</span></p>
+                                    <div class="cart">
+                                        <p>
+                                            <span class="addtocart"><a href="cart.html"><i class="icon-shopping-cart"></i></a></span>
+                                            <span><a href="product-detail.html"><i class="icon-eye"></i></a></span>
+                                            <span><a href="#"><i class="icon-heart3"></i></a></span>
+                                            <span><a href="add-to-wishlist.html"><i class="icon-bar-chart"></i></a></span>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="desc">
+                                    <h3><a href="{{ path('product_detail',{'id':rs.id }) }}">{{ rs.title }}</a></h3>
+                                    <p class="price"><span>{{ rs.pprice }}TL</span> <span class="sale">{{ rs.sprice }}TL</span> </p>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="col-md-2 col-md-pull-10">
+                    <div class="sidebar">
+                            <h2>Kategoriler</h2>
+                             {% for cat in cats %}
+                                 <ul>{{ cat|raw }}</ul>
+                             {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

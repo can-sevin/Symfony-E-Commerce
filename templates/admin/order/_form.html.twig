@@ -1,0 +1,71 @@
+<div class="colorlib-shop">
+<div class="container">
+<div class="row">
+    <div class="col-md-7">
+        <form method="post" name="orders" class="colorlib-form">
+            <h2>Billing Details</h2>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="country">Alıcının Şehri:</label>
+                        <div class="form-field">
+                            <i class="icon icon-arrow-down3"></i>
+                            <select value= "{{ order.city }}" name="orders[city]" id="people" class="form-control">
+                                <option value="#">Şehir Seç</option>
+                                <option value="istanbul">İstanbul</option>
+                                <option value="izmir">İzmir</option>
+                                <option value="antalya">Antalya</option>
+                                <option value="bursa">Bursa</option>
+                                <option value="ankara">Ankara</option>
+                                <option value="karabük">Karabük</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-6">
+                        <label for="fname">Alıcının Adı:</label>
+                        <input type="text" value= "{{ order.name }}" id="fname" class="form-control" name="orders[name]">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="lname">Alıcının Telefonu:</label>
+                        <input type="text" value= "{{ order.phone }}" name="orders[phone]" id="lname" class="form-control" placeholder="Your lastname">
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="fname">Alıcının Adresi:</label>
+                        <textarea name="orders[address]" id="address" value= "{{ order.address }}" class="form-control" placeholder="Adresinizi Girin"></textarea>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="companyname">Alıcının Notu:</label>
+                        <input value= "{{ order.note }}" name="orders[note]" type="text" id="towncity" class="form-control" placeholder="Notunuz">
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="col-md-5">
+        <div class="cart-detail">
+            <h2>Sipariş Toplam</h2>
+            <ul>
+                <li>
+                    <ul>
+                        <li><span>1 x Product Name</span> <span>$99.00</span></li>
+                        <li><span>1 x Product Name</span> <span>$78.00</span></li>
+                    </ul>
+                <li><span>Toplam Ödenecek:</span><input type="text" name="order[amount]" value="{{ total }}">
+            </ul>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <button type="submit" class="btn btn-primary">Siparişi Ver</button>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>

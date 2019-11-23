@@ -1,0 +1,8 @@
+{% extends 'frontbase.html.twig' %}
+
+{% block title %}Kullanıcı Bilgilerini Düzenle{% endblock %}
+{% block sidebar %}{{  include ('home/usidebar.html.twig') }} {% endblock %}
+{% block content %}
+    <h1>Kullanıcı Bilgilerini Düzenle</h1>
+    {{ include('user_panel/_form.html.twig', {'button_label': 'Update'}) }}
+{% endblock %}

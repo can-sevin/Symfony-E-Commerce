@@ -1,0 +1,25 @@
+<aside id="colorlib-hero">
+    <div class="flexslider">
+        <ul class="slides">
+            {% for rs in sliders %}
+            <li style= "background-image: url({{ asset('uploads') }}/images/{{ rs.image }}); background-size: contain, cover;">
+                <div class="overlay"></div>
+                <div class="container-fluid">
+                        <div class="col-md-6 col-md-offset-3 col-md-pull-2 col-sm-12 col-xs-12 slider-text">
+                            <div class="slider-text-inner">
+                                <div class="desc">
+                                    <h1 class="head-1">{{ rs.title }}</h1>
+                                    <h2 class="head-2">SADECE!</h2>
+                                    <h2 class="head-3">{{ rs.pprice }}TL</h2>
+                                    <p class="category"><span>{{ rs.description|raw }}</span></p>
+                                    <p><a href="{{ path('product_detail',{'id':rs.id }) }}" class="btn btn-primary">TIKLA</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    </div>
+</aside>

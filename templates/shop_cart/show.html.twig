@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ShopCart{% endblock %}
+
+{% block body %}
+    <h1>ShopCart</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ shop_cart.id }}</td>
+            </tr>
+            <tr>
+                <th>Kullanıcı_id</th>
+                <td>{{ shop_cart.userid }}</td>
+            </tr>
+            <tr>
+                <th>Ürün_id</th>
+                <td>{{ shop_cart.productid }}</td>
+            </tr>
+            <tr>
+                <th>Miktar</th>
+                <td>{{ shop_cart.quantity }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('shop_cart_index') }}" class="btn btn-primary">Listeye Geri Dön</a>
+{% endblock %}

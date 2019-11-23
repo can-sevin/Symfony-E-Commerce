@@ -1,0 +1,52 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Kategoriler{% endblock %}
+
+{% block content %}
+    <h1>Kategori Listesi</h1>
+    <div class="col-lg-20 mt-10">
+        <div class="card">
+            <div class="card-body">
+                <a class="btn btn-primary mb-3" href="{{ path('admin_category_new') }}">Kategori Oluştur</a>
+                <div class="single-table">
+                    <div class="table-responsive">
+                        <table class="table table-striped text-center">
+                            <thead class="text-uppercase">
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">AnaID</th>
+                                <th scope="col">Başlığı</th>
+                                <th scope="col">Açıklama</th>
+                                <th scope="col">Kelimeler</th>
+                                <th scope="col">Göster</th>
+                                <th scope="col">Düzenle</th>
+                                <th scope="col">Sil</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                {% for category in categories %}
+                                <tr>
+                                    <td>{{ category.id }}</td>
+                                    <td>{{ category.parentId }}</td>
+                                    <td>{{ category.title }}</td>
+                                    <td>{{ category.description }}</td>
+                                    <td>{{ category.keywords }}</td>
+                                    <td>
+                                        <a class="btn btn-warning mb-3" href="{{ path('admin_category_show', {'id': category.id}) }}">Göster</a>
+                                    </td>
+                                    <td>
+                                        <a class="btn btn-danger mb-3" href="{{ path('admin_category_edit', {'id': category.id,'pid':category.parentId}) }}">Düzenle</a>
+                                    </td>
+                                    <td>
+                                        <a class="btn btn-danger mb-3" href="{{ path('admin_category_delete', {'id': category.id}) }}">Sil</a>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

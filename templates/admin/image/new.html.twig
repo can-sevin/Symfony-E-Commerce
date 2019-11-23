@@ -1,0 +1,9 @@
+{% block title %}Galeriye Resim Ekle{% endblock %}
+ <h1>Galeriye Resim Ekle</h1>
+
+    {{ include('admin/image/_form.html.twig') }}
+
+{% for image in imagelist %}
+    <img src="{{ asset('uploads') }}/images/{{ image.images }}" height="200">
+    <a href="{{ path('admin_image_del',{'id':image.id,'pid':image.productid}) }}" onclick="return confirm('Silinecek Emin misiniz?');" class="btn btn-warning mb-3">Sil</a>
+{% endfor %}

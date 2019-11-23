@@ -1,0 +1,62 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Üye Düzenleme{% endblock %}
+
+{% block content %}
+    <div class="main-content-inner">
+        <div class="col-12 mt-5">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="header-title">Üye Düzenleme</h4>
+                    <form name="user" class="form-horizontal" method="post" enctype="multipart/form-data">
+                        <div class="form-group" >
+                            <label for="example-text-input" class="col-form-label">Adı Soyadı</label>
+                            <input class="form-control" type="text" value="{{ user.name }}" id="example-text-input" name="name[name]">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Email</label>
+                            <input type="email" value="{{ user.email }}" class="form-control" id="exampleInputEmail1" name="name[email]">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputttqPassword1">Password</label>
+                            <input type="password" value="{{ user.password }}" class="form-control" id="exampleInputttqPassword1" name="name[password]">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputttPassword1">Telefon</label>
+                            <input type="text" value="{{ user.phone }}" class="form-control" id="exampleInputttPassword1" name="name[phone]">
+                        </div>
+                        <div class="form-group">
+                            <label for="eeexampleInputPassword1">Şehir</label>
+                            <input type="text" value="{{ user.city }}" class="form-control" id="eeexampleInputPassword1" name="name[city]">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Address</label>
+                            <textarea  class="form-control" id="exampleInputPassword1" name="name[address]"> {{ user.address }} </textarea>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-form-label">Türü</label>
+                            <select name="name[roles]" class="custom-select">
+                                {% for item in user.roles %}
+                                <option selected>{{ item }}</option>
+                                {% endfor %}
+                                <option>ROLE_ADMIN</option>
+                                <option>ROLE_USER</option>
+                                <option>ROLE_POWER</option>
+                                <option>ROLE_MEMBER</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-form-label">Aktiflik Durumu</label>
+                            <select class="custom-select" name="name[status]">
+                                <option>{{ user.status }}</option>
+                                <option>True</option>
+                                <option>False</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary mt-4 pr-4 pl-4">Kaydet</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

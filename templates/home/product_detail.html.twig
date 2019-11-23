@@ -1,0 +1,78 @@
+{% extends 'frontbase.html.twig' %}
+
+{% block title %}{{ data[0].title }}{% endblock %}
+{% block keywords %} {{ data[0].keywords }} {% endblock %}
+{% block sidebar %} {{  include ('home/_sidebar.html.twig') }} {% endblock %}
+{% block slider %}
+    <aside id="colorlib-hero" class="breadcrumbs">
+        <div class="flexslider">
+            <ul class="slides">
+                <li style="background-image: url(&quot;images/cover-img-1.jpg&quot;); width: 100%; float: left; margin-right: -100%; position: relative; opacity: 1; display: block; z-index: 2;" class="flex-active-slide">
+                    <div class="overlay"></div>
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-6 col-md-offset-3 col-sm-12 col-xs-12 slider-text animated fadeInUp">
+                                <div class="slider-text-inner text-center">
+                                    <h1>Ürünlerimiz</h1>
+                                    <h2 class="bread"><span><a href="{{ path('home') }}">Ana Sayfa</a></span></h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <ol class="flex-control-nav flex-control-paging"></ol><ul class="flex-direction-nav"><li class="flex-nav-prev"><a class="flex-prev flex-disabled" href="#" tabindex="-1">Previous</a></li><li class="flex-nav-next"><a class="flex-next flex-disabled" href="#" tabindex="-1">Next</a></li></ul></div>
+    </aside>
+{% endblock %}
+
+{% block content %}
+        <div class="colorlib-shop">
+            <div class="container">
+                <div class="row row-pb-lg">
+                    <div class="col-md-10 col-md-offset-1">
+                        <div class="product-detail-wrap">
+                            <div class="row">
+                                <form name="shopcart" class="form-horizontal" action="{{ path('shop_cart_new')}}" method="post">
+                                <div class="col-md-5">
+                                    <div class="product-entry">
+                                        <div class="product-img" style="background-image:url({{ asset('uploads') }}/images/{{ data[0].image }});">
+                                            <p class="tag"><span class="sale">Sale</span></p>
+                                        </div>
+                                        <div class="thumb-nail">
+                                            {% for rs in images %}
+                                            <a href="#" class="thumb-img" style="background-image: url({{ asset('uploads') }}/images/{{ rs.images }});"></a>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-7">
+                                    <div class="desc">
+                                        <h3>{{ data[0].title }}</h3>
+                                        <p class="price">
+                                            <span>{{ data[0].sprice }}TL</span>
+                                        </p>
+                                        <div class="row row-pb-sm">
+                                            <div class="col-md-4">
+                                                <div class="input-group">
+                                                    <input type="number" id="quantity" name="shop_cart[quantity]" class="form-control input-number" value="1" min="1" max="{{ data[0].amount }}">
+                                                    <input type="hidden"  name="shop_cart[productid]" class="form-control input-number" value="{{ data[0].id }}">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <input type="hidden" name="token" value="{{ csrf_token('add-item') }}">
+                                        <button type="submit" class="btn btn-primary btn-addtocart">Sepete Ekle</button>
+                                        <div class="tab-content">
+                                            <h3>Açıklama:</h3>
+                                            <p>{{ data[0].description|raw }}</p>
+                                        </div>
+,                                    </div>
+                                </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

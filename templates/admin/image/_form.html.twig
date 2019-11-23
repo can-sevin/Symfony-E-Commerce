@@ -1,0 +1,6 @@
+<form action="{{ path('admin_image_new',{'pid': pid }) }}" method="post" enctype="multipart/form-data">
+    Yüklenecek Resmi Seçiniz:
+    <input name="productId" value="{{ pid }}" type="hidden" readonly>
+    <input type="file" name="imagename" id="fileToUpload"><br>
+    <input type="submit" value="Resim Yükle" name="submit">
+</form>

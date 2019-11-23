@@ -1,0 +1,56 @@
+<div class="colorlib-shop">
+<div class="container">
+    <form method="post" name="users" action="{{ path('userpanel_edit') }}" class="colorlib-form">
+    <div class="row">
+    <div class="col-md-7">
+            <h2>Billing Details</h2>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="country">Şehriniz:</label>
+                        <div class="form-field">
+                            <i class="icon icon-arrow-down3"></i>
+                            <select value= "{{ app.user.city }}" name="city" id="people" class="form-control">
+                                <option value="#">Şehir Seç</option>
+                                <option value="istanbul">İstanbul</option>
+                                <option value="izmir">İzmir</option>
+                                <option value="antalya">Antalya</option>
+                                <option value="bursa">Bursa</option>
+                                <option value="ankara">Ankara</option>
+                                <option value="karabük">Karabük</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-6">
+                        <label for="fname">Adınız:</label>
+                        <input type="text" value= "{{ app.user.name }}" id="fname" class="form-control" name="name">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="lname">Telefonunuz:</label>
+                        <input type="text" value= "{{ app.user.phone }}" name="phone" id="lname" class="form-control" placeholder="Telefonunuzu Girin">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="llname">Şifreniz:</label>
+                        <input type="text" value= "{{ app.user.password }}" name="password" id="llname" class="form-control" placeholder="Telefonunuzu Girin">
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="fname">Adresiniz:</label>
+                        <textarea name="address" id="address" class="form-control" placeholder="Adresinizi Girin">{{ app.user.address }}</textarea>
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>
+        <div class="row">
+            <div class="col-md-12">
+                <button type="submit" name="submit" class="btn btn-primary">Güncelle</button>
+                <input type="hidden" id="token" name="token" value="{{ csrf_token('user-form') }}">
+            </div>
+        </div>
+    </form>
+</div>
+</div>
